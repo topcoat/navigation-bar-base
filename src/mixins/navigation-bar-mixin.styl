@@ -1,0 +1,34 @@
+@import utils
+
+navigation-bar-base()
+  reset-box-model()
+  reset-base()
+  reset-cursor()
+
+navigation-bar__item()
+  inline-block()
+  navigation-bar-base()
+  height var-height
+  line-height var-line-height
+  margin var-margin
+
+navigation-bar__item--left()
+  navigation-bar__item()
+  left()
+  quarter()
+  padding-left var-padding--navigation-bar
+
+navigation-bar__item--center()
+  navigation-bar__item()
+  center()
+  half()
+
+navigation-bar__item--right()
+  navigation-bar__item()
+  right()
+  quarter()
+  padding-right var-padding--navigation-bar
+
+navigation-bar__title()
+  ellipsis()
+  margin var-margin
