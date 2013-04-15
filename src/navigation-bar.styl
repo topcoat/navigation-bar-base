@@ -1,12 +1,11 @@
 @import navigation-bar-mixin
 
-.navigation-bar {
+.navigation-bar
   navigation-bar-base();
-}
 
-.navigation-bar__item {
+.navigation-bar__item
+  @extend .navigation-bar
   navigation-bar__item()
-}
 
 .navigation-bar__title
   navigation-bar__title()

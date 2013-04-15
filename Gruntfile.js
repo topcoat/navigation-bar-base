@@ -36,15 +36,14 @@ module.exports = function(grunt) {
             zip: ['tmp/src/utils/*.zip']
         },
 
-        stylus: {
-            compile: {
+        compile: {
+            stylus: {
                 options: {
-                    paths: getStylusPathData(grunt),
-                    import: ['utils', 'variables'],
+                    import: ['navigation-bar-mixin', 'utils', 'variables'],
                     compress: false
                 },
                 files: {
-                    'release/css/navigation-bar.css': ['src/copyright.styl', 'src/navigation-bar.styl']
+                    'release/css/navigation-bar.css': ['src/copyright.styl', 'test/fixtures/layout.styl', 'test/fixtures/position.styl', 'test/fixtures/reset.styl', 'src/navigation-bar.styl']
                 }
             }
         },
@@ -87,8 +86,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
+    grunt.loadTasks('tasks');
+
     // Default task.
     grunt.registerTask('default', ['clean', 'topcoat', 'build']);
-    grunt.registerTask('build', ['stylus', 'cssmin', 'jade', 'nodeunit']);
+    grunt.registerTask('build', ['compile', 'cssmin', 'jade', 'nodeunit']);
 
 };
