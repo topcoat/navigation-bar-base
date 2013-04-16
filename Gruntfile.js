@@ -1,13 +1,6 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-    var getStylusPathData = function(grunt) {
-            var utilsPath = grunt.file.expand('tmp/src/utils/**/src/mixins'),
-                pathData = ['test/fixtures', 'src/mixins'].concat(utilsPath);
-
-            return pathData;
-        };
-
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -43,7 +36,7 @@ module.exports = function(grunt) {
                     compress: false
                 },
                 files: {
-                    'release/css/navigation-bar.css': ['src/copyright.styl', 'test/fixtures/layout.styl', 'test/fixtures/position.styl', 'test/fixtures/reset.styl', 'src/navigation-bar.styl']
+                    'release/css/navigation-bar.css': ['src/copyright.styl', 'test/fixtures/layout.styl', 'test/fixtures/position.styl', 'src/navigation-bar.styl']
                 }
             }
         },

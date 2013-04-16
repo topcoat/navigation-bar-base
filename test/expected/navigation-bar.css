@@ -42,27 +42,7 @@ limitations under the License.
   text-align: right;
 }
 
-.reset-ui {
-  box-sizing: border-box;
-  background-clip: padding-box;
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  user-select: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.navigation-bar,
-.navigation-bar__item {
+.navigation-bar {
   box-sizing: border-box;
   background-clip: padding-box;
   padding: 0;
@@ -71,21 +51,23 @@ limitations under the License.
   color: inherit;
   background: transparent;
   border: none;
-  cursor: pointer;
+  cursor: default;
   user-select: none;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 .navigation-bar__item {
+  box-sizing: border-box;
+  background-clip: padding-box;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
   padding: 0;
   margin: 0;
   font: inherit;
   color: inherit;
   background: transparent;
   border: none;
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
   height: 3rem;
   line-height: 3rem;
   margin: 0;
