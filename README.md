@@ -1,6 +1,8 @@
-Navigation bar base
-======
+Topcoat Navigation Bar Base
+===========================
 
-### TopCoat navigation bar base
+### Topcoat navigation bar base
 
-This is the base for all TopCoat navigation bars.
+This is the reset base for all Topcoat navigation bars.
+
+[![NPM](https://nodei.co/npm/topcoat-navigation-bar-base.png)](https://nodei.co/npm/topcoat-navigation-bar-base/>)

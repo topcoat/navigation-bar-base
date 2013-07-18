@@ -3,51 +3,35 @@ module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        gruntfile: {
-            src: 'Gruntfile.js'
-        },
-
-        topcoat: {
-            download: {
-                options: {
-                    srcPath: 'tmp/src/',
-                    repos: '<%= pkg.topcoat %>'
-                }
-            }
-        },
-
-        unzip: {
-            utils: {
-                src: 'tmp/src/utils/*.zip',
-                dest: 'tmp/src/utils'
-            }
-        },
 
         clean: {
-            tmp: ['tmp'],
-            zip: ['tmp/src/utils/*.zip']
+            release: ['css']
         },
 
-        compile: {
             stylus: {
+        compile: {
                 options: {
-                    import: ['navigation-bar-mixin', 'utils', 'variables'],
+                    paths: ['src/mixins', 'node_modules/topcoat-utils/src/mixins', 'node_modules/topcoat-theme/src/includes'],
+                    import: ['navigation-bar-mixin', 'utils', 'layout', 'position'],
                     compress: false
                 },
-                files: {
-                    'release/css/navigation-bar.css': ['src/copyright.styl', 'test/fixtures/layout.styl', 'test/fixtures/position.styl', 'src/navigation-bar.styl']
-                }
+                files: [{
+                    src: 'src/navigation-bar.styl',
+                    dest: 'css/navigation-bar.css'
+                }]
             }
         },
 
         cssmin: {
             minify: {
                 expand: true,
-                cwd: 'release/css/',
+                cwd: 'css',
                 src: ['*.css', '!*.min.css'],
-                dest: 'release/css/',
-                ext: '.min.css'
+                dest: 'css',
+                ext: '.min.css',
+                options: {
+                    banner: grunt.file.read('src/copyright.styl').toString()
+                }
             }
         },
 
@@ -60,29 +44,36 @@ module.exports = function(grunt) {
                 ext: '.test.html'
             }
         },
-        nodeunit: {
-            tests: ['test/*.test.js']
+
+        simplemocha: {
+            options: {
+                ui: 'bdd',
+                reporter: 'Nyan'
+            },
+            all: {
+                src: ['test/*.test.js']
+            }
         },
+
         watch: {
-            files: 'src/*.styl',
-            tasks: ['build']
+            files: 'src/**/*.styl',
+            tasks: ['build', 'test']
         }
+
     });
 
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-jade');
-    grunt.loadNpmTasks('grunt-contrib-nodeunit');
-    grunt.loadNpmTasks('grunt-topcoat');
-    grunt.loadNpmTasks('grunt-zip');
+    grunt.loadNpmTasks('grunt-simple-mocha');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.loadTasks('tasks');
-
     // Default task.
-    grunt.registerTask('default', ['clean', 'topcoat', 'build']);
-    grunt.registerTask('build', ['compile', 'cssmin', 'jade', 'nodeunit']);
+    grunt.registerTask('default', ['clean', 'build', 'test', 'release']);
+    grunt.registerTask('build', ['stylus', 'jade']);
+    grunt.registerTask('test', ['simplemocha']);
+    grunt.registerTask('release', ['cssmin']);
 
 };
