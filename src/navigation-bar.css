@@ -15,19 +15,21 @@
 * limitations under the License.
 *
 */
-@import utils
+@import "topcoat-utils";
 
-.navigation-bar
-  reset-container()
-  reset-base()
-  reset-cursor()
+%navigation-bar {
+  extend: %reset-container;
+  extend: %reset-base;
+  extend: %reset-cursor;
+}
 
-.navigation-bar__item
-  reset-box-model()
-  inline-block()
-  reset-base()
+%navigation-bar__item {
+  extend: %reset-box-model;
+  extend: %inline-block;
+  extend: %reset-base;
+}
 
-.navigation-bar__title
-  reset-base()
-  ellipsis()
-
+%navigation-bar__title {
+  extend: %reset-base;
+  extend: %ellipsis;
+}
