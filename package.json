@@ -3,6 +3,7 @@
   "version": "0.5.0",
   "description": "Topcoat navigation bar base",
   "main": "index.html",
+  "style": "src/navigation-bar.css",
   "directories": {
     "test": "test",
     "lib": "src",
@@ -24,19 +25,16 @@
     "base",
     "adobe"
   ],
-  "author": "@dam Kristofer Joseph",
+  "author": "@dam",
   "license": "Apache2",
   "devDependencies": {
-    "grunt-contrib-watch": "~0.4.4",
     "grunt": "~0.4.1",
-    "grunt-contrib-stylus": "~0.6.0",
-    "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-cssmin": "~0.6.1",
-    "grunt-contrib-jade": "~0.7.0",
-    "grunt-simple-mocha": "~0.4.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-simple-mocha": "~0.4.0",
+    "grunt-topcoat": "~0.1.0"
   },
   "dependencies": {
-    "topcoat-utils": "~0.1.0",
-    "topcoat-theme": "~0.4.0"
+    "topcoat-utils": "~0.3.0"
   }
 }
