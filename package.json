@@ -2,20 +2,18 @@
   "name": "topcoat-navigation-bar-base",
   "version": "0.6.0",
   "description": "Topcoat navigation bar base",
-  "main": "index.html",
   "style": "src/navigation-bar.css",
   "directories": {
-    "test": "test",
-    "lib": "src",
-    "bin": "css"
+    "test": "test"
   },
   "scripts": {
-    "test": "grunt test",
-    "prepublish": "grunt"
+    "test": "ava test",
+    "prepublish": "rsn -p './' -o ./css/navigation-bar-base.css ./test/navigation-bar-base.fixture.css",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/topcoat/navigation-bar-base.git"
+    "url": "https://github.com/topcoat/navigation-bar-base.git"
   },
   "keywords": [
     "navigation",
@@ -25,16 +23,33 @@
     "base",
     "adobe"
   ],
-  "author": "@dam",
-  "license": "Apache2",
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-cssmin": "~0.6.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-simple-mocha": "~0.4.0",
-    "grunt-topcoat": "~0.1.0"
+  "author": "Kristofer Joseph <kristoferjoseph@gmail.com> (http://kristoferjoseph.com/)",
+  "contributors": [
+    "Garth Braithwaite <garthdb@gmail.com> (http://garthdb.com)"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/topcoat/topcoat/issues"
   },
+  "homepage": "http://topcoat.io",
   "dependencies": {
-    "topcoat-utils": "~0.3.0"
+    "topcoat-utils": "^1.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.3",
+    "ava": "^0.17.0",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-register": "^6.18.0",
+    "cz-customizable": "^4.0.0",
+    "mocha": "^3.2.0",
+    "resin": "^1.2.1",
+    "semantic-release": "^6.3.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
   }
 }

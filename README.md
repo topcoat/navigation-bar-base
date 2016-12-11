@@ -1,7 +1,4 @@
-Topcoat Navigation Bar Base
-===========================
-
-### Topcoat navigation bar base
+# Topcoat Button Base
 
 This is the reset base for all Topcoat navigation bars.
 
